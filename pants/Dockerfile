@@ -26,3 +26,6 @@ RUN git clone https://github.com/thesamet/pants /pants-dev
 # Get it to bootstrap
 WORKDIR /pants-dev
 RUN ./pants goals
+
+RUN apt-get install -y --no-install-recommends file
+RUN pip install flake8 pep8 awscli
