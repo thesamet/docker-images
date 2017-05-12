@@ -1,23 +1,31 @@
-FROM ubuntu:16.04
+FROM ubuntu:14.04
+RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common
+
+RUN add-apt-repository ppa:fkrull/deadsnakes && \
+    add-apt-repository ppa:openjdk-r/ppa
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        python-dev \
-        libmysqlclient-dev \
-        openjdk-9-jdk-headless \
-        python-pip \
-        python3 \
-        python3-pip \
-        python3-dev \
-        sudo \
+        build-essential \
         curl \
-        git \
         file \
-        ruby ruby-dev rubygems build-essential && \
+        git \
+        libffi-dev \
+        libmysqlclient-dev \
+        openjdk-8-jdk-headless \
+        python3.5 \
+        python3.5-dev \
+        python3.5-venv \
+        python-dev \
+        python-pip \
+        ruby ruby-dev \
+        sudo && \
     rm -rf /var/cache/apt/archives
 
 RUN gem install --no-ri --no-rdoc fpm
 
 RUN curl -L "https://github.com/docker/compose/releases/download/1.11.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
+
+RUN python3.5 -m ensurepip
 
 RUN pip install --upgrade setuptools pip && \
     pip3 install --upgrade setuptools pip
