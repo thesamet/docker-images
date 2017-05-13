@@ -21,6 +21,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         sudo && \
     rm -rf /var/cache/apt/archives
 
+RUN update-ca-certificates -f
+
 RUN gem install --no-ri --no-rdoc fpm
 
 RUN curl -L "https://github.com/docker/compose/releases/download/1.11.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
