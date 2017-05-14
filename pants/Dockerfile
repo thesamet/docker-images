@@ -29,8 +29,12 @@ RUN curl -L "https://github.com/docker/compose/releases/download/1.11.2/docker-c
 
 RUN python3.5 -m ensurepip
 
-RUN pip install --upgrade setuptools pip && \
-    pip3 install --upgrade setuptools pip
+RUN pip2 install --upgrade setuptools pip wheel && \
+    pip3 install --upgrade setuptools pip wheel
 
-RUN pip install --upgrade pip wheel flake8 pep8 awscli
-RUN pip3 install --upgrade pip wheel
+# We install the linters script into directories that correspond to the
+# interpreter version so it is easy to fork the right one from pants.
+RUN pip2 install --install-option=--install-scripts=/opt/linters/python2/ pep8 flake8 autopep8 && \
+    pip3 install --install-option=--install-scripts=/opt/linters/python3/ pep8 flake8 autopep8
+
+RUN pip2 install awscli
