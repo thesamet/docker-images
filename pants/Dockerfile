@@ -38,3 +38,8 @@ RUN pip2 install --install-option=--install-scripts=/opt/linters/python2/ pep8 f
     pip3 install --install-option=--install-scripts=/opt/linters/python3/ pep8 flake8 autopep8
 
 RUN pip2 install awscli
+
+# Spark 2.0.2
+RUN curl -s http://d3kbcqa49mib13.cloudfront.net/spark-2.0.2-bin-hadoop2.7.tgz | tar -xz -C /opt/
+RUN ln -s spark-2.0.2-bin-hadoop2.7 /opt/spark-2.0.2
+
