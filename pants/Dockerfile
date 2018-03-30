@@ -46,3 +46,6 @@ RUN ln -s spark-2.0.2-bin-hadoop2.7 /opt/spark-2.0.2
 RUN curl -s http://d3kbcqa49mib13.cloudfront.net/spark-2.1.1-bin-hadoop2.7.tgz | tar -xz -C /opt/
 RUN ln -s spark-2.1.1-bin-hadoop2.7 /opt/spark-2.1.1
 
+# Spark 2.3.0
+RUN curl -s https://archive.apache.org/dist/spark/spark-2.3.0/spark-2.3.0-bin-hadoop2.7.tgz | tar -xz -C /opt/
+RUN ln -s spark-2.3.0-bin-hadoop2.7 /opt/spark-2.3.0
