@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 RUN apt-get update && apt-get install -y --no-install-recommends software-properties-common
 
 RUN add-apt-repository ppa:fkrull/deadsnakes && \
@@ -27,10 +27,10 @@ RUN gem install --no-ri --no-rdoc fpm
 
 RUN curl -L "https://github.com/docker/compose/releases/download/1.11.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose
 
-RUN python3.5 -m ensurepip
+RUN apt-get install -y python3-pip
 
-RUN pip2 install --upgrade setuptools pip wheel && \
-    pip3 install --upgrade setuptools pip wheel
+RUN python2 -m pip install --upgrade setuptools pip wheel && \
+    python3 -m pip install --upgrade setuptools pip wheel
 
 # We install the linters script into directories that correspond to the
 # interpreter version so it is easy to fork the right one from pants.
