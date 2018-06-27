@@ -11,6 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         git \
         libffi-dev \
         libmysqlclient-dev \
+        libssl-dev \
         openjdk-8-jdk-headless \
         python3.5 \
         python3.5-dev \
